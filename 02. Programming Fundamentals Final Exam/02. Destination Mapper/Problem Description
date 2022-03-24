@@ -1,0 +1,2 @@
+You will be given a string representing some places on the map. You have to filter only the valid ones.
+After you have matched all the valid locations, you have to calculate travel points.
