@@ -23,11 +23,7 @@ public class TheImitationGame {
                 case "ChangeAll":
                     String oldString = commandAttribute[1];
                     String newString = commandAttribute[2];
-                    index = input.indexOf(oldString);
-                    while (index != -1) {
-                        input.replace(index, index + oldString.length(), newString);
-                        index = input.indexOf(oldString,index+newString.length());
-                    }
+                    input.replace(0, input.length(), input.toString().replace(oldString, newString));
                     break;
             }
         }
