@@ -1,0 +1,3 @@
+On the first line, you will be given a string containing all of your stops. 
+Until you receive the command "Travel", you will be given some commands to manipulate that initial string. 
+After the "Travel" command, print the following: "Ready for world tour! Planned stops: {string}"
