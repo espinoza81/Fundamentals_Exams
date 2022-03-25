@@ -52,22 +52,23 @@ public class HeroesOfCodeAndLogic {
             String[] commandAttributes = input.split(" - ");
             String command = commandAttributes[0];
             String name = commandAttributes[1];
+            Hero singleHero = heroList.get(name);
             switch (command){
                 case "CastSpell":
                     int manaNeeded = Integer.parseInt(commandAttributes[2]);
                     String spell = commandAttributes[3];
-                    if(heroList.get(name).getManaPoints() - manaNeeded >= 0) {
-                        heroList.get(name).setManaPoints(heroList.get(name).getManaPoints() - manaNeeded);
-                        System.out.printf("%s has successfully cast %s and now has %d MP!%n", name, spell, heroList.get(name).getManaPoints());
+                    if(singleHero.getManaPoints() - manaNeeded >= 0) {
+                        singleHero.setManaPoints(singleHero.getManaPoints() - manaNeeded);
+                        System.out.printf("%s has successfully cast %s and now has %d MP!%n", name, spell, singleHero.getManaPoints());
                     }
                     else System.out.printf("%s does not have enough MP to cast %s!%n", name, spell);
                     break;
                 case "TakeDamage":
                     int damage = Integer.parseInt(commandAttributes[2]);
                     String attacker = commandAttributes[3];
-                    if(heroList.get(name).getHitPoints() - damage > 0) {
-                        heroList.get(name).setHitPoints(heroList.get(name).getHitPoints() - damage);
-                        System.out.printf("%s was hit for %d HP by %s and now has %d HP left!%n", name, damage, attacker, heroList.get(name).getHitPoints());
+                    if(singleHero.getHitPoints() - damage > 0) {
+                        singleHero.setHitPoints(singleHero.getHitPoints() - damage);
+                        System.out.printf("%s was hit for %d HP by %s and now has %d HP left!%n", name, damage, attacker, singleHero.getHitPoints());
                     }
                     else {
                         heroList.remove(name);
@@ -76,23 +77,23 @@ public class HeroesOfCodeAndLogic {
                     break;
                 case "Recharge":
                     int mana = Integer.parseInt(commandAttributes[2]);
-                    if(heroList.get(name).getManaPoints()+mana < maxManaPoints){
-                        heroList.get(name).setManaPoints(heroList.get(name).getManaPoints()+mana);
+                    if(singleHero.getManaPoints()+mana < maxManaPoints){
+                        singleHero.setManaPoints(singleHero.getManaPoints()+mana);
                     }
                     else {
-                        mana = 200 - heroList.get(name).getManaPoints();
-                        heroList.get(name).setManaPoints(200);
+                        mana = 200 - singleHero.getManaPoints();
+                        singleHero.setManaPoints(200);
                     }
                     System.out.printf("%s recharged for %d MP!%n", name, mana);
                     break;
                 case "Heal":
                     int hit = Integer.parseInt(commandAttributes[2]);
-                    if(heroList.get(name).getHitPoints()+hit < maxHitPoints){
-                        heroList.get(name).setHitPoints(heroList.get(name).getHitPoints()+hit);
+                    if(singleHero.getHitPoints()+hit < maxHitPoints){
+                        singleHero.setHitPoints(singleHero.getHitPoints()+hit);
                     }
                     else {
-                        hit = 100 - heroList.get(name).getHitPoints();
-                        heroList.get(name).setHitPoints(100);
+                        hit = 100 - singleHero.getHitPoints();
+                        singleHero.setHitPoints(100);
                     }
                     System.out.printf("%s healed for %d HP!%n", name, hit);
                     break;
