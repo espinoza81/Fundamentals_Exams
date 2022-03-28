@@ -49,11 +49,17 @@ public class ThePianist {
                     if(pieceList.putIfAbsent(piece, singlePiece)==null) {
                         System.out.printf("%s by %s in %s added to the collection!%n", piece, composer, key);
                     }
-                    else System.out.println(piece + " is already in the collection!");
+                    else {
+                        System.out.println(piece + " is already in the collection!");
+                    }
                     break;
                 case "Remove":
-                    if(pieceList.remove(piece) != null) System.out.printf("Successfully removed %s!%n", piece);
-                    else System.out.printf("Invalid operation! %s does not exist in the collection.%n", piece);
+                    if(pieceList.remove(piece) != null) {
+                        System.out.printf("Successfully removed %s!%n", piece);
+                    }
+                    else {
+                        System.out.printf("Invalid operation! %s does not exist in the collection.%n", piece);
+                    }
                     break;
                 case "ChangeKey":
                     String newKey = event.split("\\|")[2];
@@ -61,7 +67,9 @@ public class ThePianist {
                         pieceList.get(piece).setKey(newKey);
                         System.out.printf("Changed the key of %s to %s!%n", piece, newKey);
                     }
-                    else System.out.printf("Invalid operation! %s does not exist in the collection.%n", piece);
+                    else {
+                        System.out.printf("Invalid operation! %s does not exist in the collection.%n", piece);
+                    }
                     break;
             }
         }
